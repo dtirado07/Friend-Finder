@@ -12,7 +12,7 @@
 </head>
 
 <body>
-    <div class="modal" tabindex="-1" role="dialog" id="show-results">
+    <div class="modal" tabindex="-1" role="dialog" id="show-friends">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -22,10 +22,10 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <img id="picFound" src=""
+                    <img id="photoRes" src=""
                         alt="https://sainfoinc.com/wp-content/uploads/2018/02/image-not-available.jpg"
                         class="img-thumbnail">
-                    <h2 id="nameFound"></h2>
+                    <h2 id="friend"></h2>
 
                 </div>
                 <div class="modal-footer">
@@ -265,23 +265,26 @@
             if (flag == true) {
                 var currentURL = window.location.origin;
                 $.post(currentURL + "/api/friends", usr, function (data) {
-                    if (data == true) { }
-                    else { alert(data + "not uploaded") }
+                    if (data == true) 
+                    { }
+                    else { 
+                        alert(data + "Upload error") 
+                    }
                 }).then(
                     function () {
-                        $.ajax({ url: currentURL + '/api/friends', method: 'GET' }).done(function (tableData) {
-                            var result2 = [];
-                            for (let i = 0; i < tableData.length - 1; i++) {
+                        $.ajax({ url: currentURL + '/api/friends', method: 'GET' }).done(function (resTable) {
+                            var arrayRes = [];
+                            for (let i = 0; i < resTable.length - 1; i++) {
                                 var result = 0;
                                 for (let j = 0; j < usr.scores.length; j++) {
-                                    result += Math.abs(parseInt(usr.scores[j]) - parseInt(tableData[i].scores[j]))
+                                    result += Math.abs(parseInt(usr.scores[j]) - parseInt(resTable[i].scores[j]))
                                 }
-                                result2.push(result);
+                                arrayRes.push(result);
                             }
-                            var indexMin = result2.indexOf(Math.min.apply(Math, result2));
-                            $("#nameFound").text(tableData[indexMin].name);
-                            $("#picFound").attr("src", tableData[indexMin].picURL);
-                            $("#show-results").modal({
+                            var indexMin = arrayRes.indexOf(Math.min.apply(Math, arrayRes));
+                            $("#friend").text(resTable[indexMin].name);
+                            $("#photoRes").attr("src", resTable[indexMin].picURL);
+                            $("#show-friends").modal({
                                 show: true,
                                 backdrop: 'static',
                                 keyboard: false
@@ -291,14 +294,6 @@
                 )
             }
         })
-        $('#clear').on('click', function () {
-            clearTable();
-            location.realod();
-        })
-        function clearTable() {
-            var currentURL = window.location.origin;
-            $.ajax({ url: currentURL + '/api/clear', method: 'POST' })
-        }
     </script>
 
 </body>
