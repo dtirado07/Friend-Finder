@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <title>FindFriend The App</title>
+</head>
+
+<body>
+    <div class="modal" tabindex="-1" role="dialog" id="show-results">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">New Match found</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img id="picFound" src=""
+                        alt="https://sainfoinc.com/wp-content/uploads/2018/02/image-not-available.jpg"
+                        class="img-thumbnail">
+                    <h2 id="nameFound"></h2>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="jumbotron">
+        <h1 class="display-5">
+            <i class="fa fa-users"></i> Friend Finder App | Survey </h1>
+        <p class="lead">Match your friend by doing the survey!</p>
+        <hr class="my-4">
+        <form>
+
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <label for="name">First name</label>
+                </div>
+                <br>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <input type="text" class="form-control " id="name" placeholder="First Name" required>
+                </div>
+                <br>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-3">
+                    <label for="usrPhoto">Profile Photo (URL link)</label>
+                </div>
+                <br>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <input type="text" class="form-control " id="usrPhoto" required><button id='photo'><i
+                            class="fa fa-photo " aria-hidden="true"></i>Select URL</button>
+                </div>
+            </div>
+
+
+            <hr class="my-4">
+            <div class="row">
+
+                <div class="col-12">
+                    <label class="mr-sm-2 " for="Q1">Q1-You prefer staying at home Netflix than cinema</label>
+                </div>
+                <div class="col-12">
+                    <select class="custom-select mr-sm-2 w-25" id="Q1">
+                        <option selected>Choose...</option>
+                        <option value="1">1 (Strongly Disagree)</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5 (Strongly Agree)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <label class="mr-sm-2 " for="Q2">Q2-You prefer watch sports over a romantic movie</label>
+                </div>
+                <div class="col-12">
+                    <select class="custom-select mr-sm-2 w-25" id="Q2">
+                        <option selected>Choose...</option>
+                        <option value="1">1 (Strongly Disagree)</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5 (Strongly Agree)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <label class="mr-sm-2 " for="Q3">Q3-Icecream and popcorn over humus and vegetables</label>
+                </div>
+                <div class="col-12">
+                    <select class="custom-select mr-sm-2 w-25" id="Q3">
+                        <option selected>Choose...</option>
+                        <option value="1">1 (Strongly Disagree)</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5 (Strongly Agree)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <label class="mr-sm-2 " for="Q4">Q4-Football over soccer</label>
+                </div>
+                <div class="col-12">
+                    <select class="custom-select mr-sm-2 w-25" id="Q4">
+                        <option selected>Choose...</option>
+                        <option value="1">1 (Strongly Disagree)</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5 (Strongly Agree)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <label class="mr-sm-2 " for="Q5">Q5-Conversation over a club</label>
+                </div>
+                <div class="col-12">
+                    <select class="custom-select mr-sm-2 w-25" id="Q5">
+                        <option selected>Choose...</option>
+                        <option value="1">1 (Strongly Disagree)</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5 (Strongly Agree)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <label class="mr-sm-2 " for="Q6">Q6-Cook a nice dinner over UberEats</label>
+                </div>
+                <div class="col-12">
+                    <select class="custom-select mr-sm-2 w-25" id="Q6">
+                        <option selected>Choose...</option>
+                        <option value="1">1 (Strongly Disagree)</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5 (Strongly Agree)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <label class="mr-sm-2 " for="Q7">Q7-Going to sleep at 10pm over staying up all night on
+                        Friday</label>
+                </div>
+                <div class="col-12">
+                    <select class="custom-select mr-sm-2 w-25" id="Q7">
+                        <option selected>Choose...</option>
+                        <option value="1">1 (Strongly Disagree)</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5 (Strongly Agree)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <label class="mr-sm-2 " for="Q8">Q8-Wine and cheese over beer and tacos</label>
+                </div>
+                <div class="col-12">
+                    <select class="custom-select mr-sm-2 w-25" id="Q8">
+                        <option selected>Choose...</option>
+                        <option value="1">1 (Strongly Disagree)</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5 (Strongly Agree)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <label class="mr-sm-2 " for="Q9">Q9-Vacation on a new place over going to your favorite
+                        beach</label>
+                </div>
+                <div class="col-12">
+                    <select class="custom-select mr-sm-2 w-25" id="Q9">
+                        <option selected>Choose...</option>
+                        <option value="1">1 (Strongly Disagree)</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5 (Strongly Agree)</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-12">
+                    <label class="mr-sm-2 " for="Q10">Q10-Meet eachother or video games over Internet</label>
+                </div>
+                <div class="col-12">
+                    <select class="custom-select mr-sm-2 w-25" id="Q10">
+                        <option selected>Choose...</option>
+                        <option value="1">1 (Strongly Disagree)</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5 (Strongly Agree)</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+
+
+
+
+
+        <hr class="my-4">
+        <button class="btn btn-secondary" id='submit'>Submit</button>
+        <a href="/home"> Home |</a>
+        <a href="/api/friends">Friend List |</a>
+    </div>
+
+    <script>
+        $("#photo").on("click", function (event) {
+            async function upload(input) {
+                const text = await navigator.clipboard.readText();
+                $('#usrPhoto').val(text);
+                console.log(text);
+            }
+            upload();
+        });
+        $("#submit").on("click", function (event) {
+            event.preventDefault();
+            var scores = [];
+            var flag = true;
+            for (let i = 0; i < 10; i++) {
+                value = $('#Q' + parseInt(i + 1)).val();
+                scores[i] = value;
+            }
+            var usr = {
+                name: $('#name').val().trim(),
+                picURL: $('#usrPhoto').val().trim(),
+                scores: scores
+            }
+            console.log(usr);
+            if (flag == true) {
+                var currentURL = window.location.origin;
+                $.post(currentURL + "/api/friends", usr, function (data) {
+                    if (data == true) { }
+                    else { alert(data + "not uploaded") }
+                }).then(
+                    function () {
+                        $.ajax({ url: currentURL + '/api/friends', method: 'GET' }).done(function (tableData) {
+                            var result2 = [];
+                            for (let i = 0; i < tableData.length - 1; i++) {
+                                var result = 0;
+                                for (let j = 0; j < usr.scores.length; j++) {
+                                    result += Math.abs(parseInt(usr.scores[j]) - parseInt(tableData[i].scores[j]))
+                                }
+                                result2.push(result);
+                            }
+                            var indexMin = result2.indexOf(Math.min.apply(Math, result2));
+                            $("#nameFound").text(tableData[indexMin].name);
+                            $("#picFound").attr("src", tableData[indexMin].picURL);
+                            $("#show-results").modal({
+                                show: true,
+                                backdrop: 'static',
+                                keyboard: false
+                            });
+                        })
+                    }
+                )
+            }
+        })
+        $('#clear').on('click', function () {
+            clearTable();
+            location.realod();
+        })
+        function clearTable() {
+            var currentURL = window.location.origin;
+            $.ajax({ url: currentURL + '/api/clear', method: 'POST' })
+        }
+    </script>
+
+</body>
+
+</html>
